@@ -1,0 +1,18 @@
+class Solution:
+    def calPoints(self, operations: List[str]) -> int:
+        records = []
+        for op in operations:
+            if op == "+":
+                records.append(records[-1] + records[-2])
+            elif op == "C":
+                records.pop()
+            elif op == "D":
+                records.append(records[-1] * 2)
+            else:
+                records.append(int(op))
+        
+        res = 0
+        for record in records:
+            res += record
+        
+        return res
